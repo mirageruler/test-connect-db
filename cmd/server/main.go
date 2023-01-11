@@ -28,8 +28,23 @@ func serve() error {
 
 	ip := fmt.Sprintf("%s:%s", cfg.AppHost, cfg.AppPort)
 	srv := api.NewServer(repo)
+	go test(srv)
 	http.ListenAndServe(ip, srv)
 	// block here
+
+	return nil
+}
+
+func test(srv *api.Server) error {
+	users, err := srv.Repo.Users.ManyByName("name-1")
+	if err != nil {
+		fmt.Println("ERROR:", err.Error())
+		return err
+	}
+
+	for i, u := range users {
+		fmt.Printf("user#%d: %v", i+1, u)
+	}
 
 	return nil
 }
