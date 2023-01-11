@@ -18,7 +18,7 @@ import (
 
 func NewPostgresStore(cfg *configs.Config) Store {
 	ds := fmt.Sprintf(
-		"postgresql://%s:%s@%s:%s/%s?sslmode=disable",
+		"postgresql://%s:%s@%s:%s/%s?sslmode=require",
 		cfg.DatabaseUser, cfg.DatabasePassword,
 		cfg.DatabaseHost, cfg.DatabasePort, cfg.DatabaseName,
 	)
