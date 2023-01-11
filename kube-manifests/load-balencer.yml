@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: testdb-app-service
+  labels:
+    app: testdb-app-localdocker
+spec:
+  type: LoadBalancer
+  selector:
+    app: testdb-app-localdocker
+  ports:
+    - port: 80
+      targetPort: 80

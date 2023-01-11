@@ -1,6 +1,6 @@
 .PHONY: run
 run:
-	go run cmd/server/run.go
+	go run cmd/server/main.go
 
 .PHONY: migrate-create
 migrate-create:

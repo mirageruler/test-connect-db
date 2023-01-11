@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-connect-db
+  labels:
+    app: test-connect-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-connect-db
+  template:
+    metadata:
+      labels:
+        app: test-connect-db
+    spec:
+      containers:
+        - name: test-connect-db
+          image: testconndb.azurecr.io/testconnectdb:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
