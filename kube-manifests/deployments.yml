@@ -27,7 +27,7 @@ spec:
           # - Each init container must complete successfully before the next one starts.
       containers:
       - name: testdbconn
-        image: testdbconn.azurecr.io/testconnectdb2:1.0.1
+        image: testdbconn.azurecr.io/mirageruler:version1.0
         imagePullPolicy: Always
         resources:
           requests:
@@ -39,6 +39,16 @@ spec:
         env:
         - name: ACCEPT_EULA
           value: "Y"
+        - name: DATABASE_HOST
+          value: "examples-server.postgres.database.azure.com"
+        - name: DATABASE_PORT
+          value: "5432"
+        - name: DATABASE_NAME
+          value: "postgres"
+        - name: DATABASE_USER
+          value: "adminTerraform@examples-server"
+        - name: DATABASE_PASSWORD
+          value: "QAZwsx123"
         ports:
         - containerPort: 80
           name: testdbconn
